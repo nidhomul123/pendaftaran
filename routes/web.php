@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CaptchaValidationController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LandingController::class, 'index'])->name('landing');
+
+Route::get('reload_captcha', [CaptchaValidationController::class, 'reloadCaptcha'])->name('reload_captcha');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
