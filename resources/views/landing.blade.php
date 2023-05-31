@@ -60,36 +60,118 @@
                         <div class="row align-items-stretch mb-5">
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label class="mb-2">Nama Depan</label>
-                                    <input class="form-control" id="first_name" type="text" placeholder="Masukkan nama depan" data-sb-validations="required" />
-                                    <div class="invalid-feedback" data-sb-feedback="first_name:required">Nama Depan tidak boleh kosong</div>
+                                    <label class="mb-2">Nama Lengkap <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="full_name" name="full_name" type="text" placeholder="Masukkan nama lengkap" data-sb-validations="required" />
+                                    <div class="invalid-feedback" data-sb-feedback="full_name:required">Nama Lengkap tidak boleh kosong</div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label class="mb-2">Nama Belakang</label>
-                                    <input class="form-control" id="last_name" type="text" placeholder="Masukkan nama belakang" data-sb-validations="required" />
-                                    <div class="invalid-feedback" data-sb-feedback="last_name:required">Nama Belakang tidak boleh kosong</div>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label class="mb-2">Email</label>
-                                    <input class="form-control" id="email" type="email" placeholder="Masukkan alamat email" data-sb-validations="required,email" />
+                                    <label class="mb-2">Email <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="email" name="email" type="email" placeholder="Masukkan alamat email" data-sb-validations="required,email" />
                                     <div class="invalid-feedback" data-sb-feedback="email:required">Email tidak boleh kosong</div>
                                     <div class="invalid-feedback" data-sb-feedback="email:email">Email tidak valid</div>
                                 </div>
                                 <div class="form-group mb-3">
+                                    <label class="mb-2">Jenis Kelamin <span class="text-danger">*</span></label>
+                                    <br>
+                                    <input name="gender" type="radio" value="1" />
+                                    &nbsp;
+                                    <label>Laki-laki</label>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input name="gender" type="radio" value="0" />
+                                    &nbsp;
+                                    <label>Perempuan</label>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Tempat Lahir <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="birth_place" name="birth_place" type="text" placeholder="Masukkan tempat lahir" data-sb-validations="required" />
+                                    <div class="invalid-feedback" data-sb-feedback="birth_place:required">Tempat Lahir tidak boleh kosong</div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Tanggal Lahir <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="birth_date" name="birth_date" type="text" placeholder="Masukkan tanggal lahir" data-sb-validations="required" />
+                                    <div class="invalid-feedback" data-sb-feedback="birth_date:required">Tanggal Lahir tidak boleh kosong</div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Pangkalan/Gudep <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="pangkalan_gudep" name="pangkalan_gudep" type="text" placeholder="Masukkan pangkalan/gudep" data-sb-validations="required" />
+                                    <div class="invalid-feedback" data-sb-feedback="pangkalan_gudep:required">Pangkapan/Gudep tidak boleh kosong</div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Kwarran <span class="text-danger">*</span></label>
+                                    <select class="form-control" name="kwarran">
+                                        <option value="">- Pilih Kwarran -</option>
+                                        @foreach ($kwarran as $item)
+                                            <option value="{{ $item->id }}">{{ $item->kwarran }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group mb-3">
                                     <label class="mb-2">NIK</label>
-                                    <input class="form-control" id="nik" type="number" placeholder="Masukkan nomor NIK" data-sb-validations="required" />
-                                    <div class="invalid-feedback" data-sb-feedback="nik:required">Nomor NIK tidak boleh kosong</div>
+                                    <input class="form-control" id="nik" name="nik" type="number" placeholder="Masukkan nomor NIK" />
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">NTA Pramuka/NIS/NIM <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="nta_pramuka_nis_nim" name="nta_pramuka_nis_nim" type="text" placeholder="Masukkan NTA Pramuka/NIS/NIM" data-sb-validations="required" />
+                                    <div class="invalid-feedback" data-sb-feedback="nta_pramuka_nis_nim:required">NTA Pramuka/NIS/NIM tidak boleh kosong</div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Tingkatan Pramuka <span class="text-danger">*</span></label>
+                                    <select class="form-control" name="scout_level">
+                                        <option value="">- Pilih Tingkatan Pramuka -</option>
+                                        @foreach ($scout_level as $item)
+                                            <option value="{{ $item->id }}">{{ $item->scout_level }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Krida Saka Milenial <span class="text-danger">*</span></label>
+                                    <br>
+                                    @foreach ($krida_saka_milenial as $item)
+                                        <input name="krida_saka_milenial" type="radio" value="{{ $item->id }}" />
+                                        &nbsp;
+                                        <label class="mb-1">{{ $item->krida_saka_milenial }}</label>
+                                        <br>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-3">
-                                    <label class="mb-2">Nomor Handphone</label>
-                                    <input class="form-control" id="phone_number" type="number" placeholder="Masukkan nomor handphone" data-sb-validations="required" />
-                                    <div class="invalid-feedback" data-sb-feedback="phone_number:required">Nomor Handphone tidak boleh kosong</div>
+                                    <label class="mb-2">Alamat Tempat Tinggal <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="address" name="address" rows="2" placeholder="Masukkan alamat tempat tinggal" data-sb-validations="required"></textarea>
+                                    <div class="invalid-feedback" data-sb-feedback="address:required">Alamat Tempat Tinggal tidak boleh kosong</div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Nomor Telepon <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="phone_number" name="phone_number" type="number" placeholder="Masukkan nomor telepon" data-sb-validations="required" />
+                                    <div class="invalid-feedback" data-sb-feedback="phone_number:required">Nomor Telepon tidak boleh kosong</div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Twitter</label>
+                                    <input class="form-control" id="twitter" name="twitter" type="text" placeholder="Masukkan twitter" />
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Instagram</label>
+                                    <input class="form-control" id="instagram" name="instagram" type="text" placeholder="Masukkan instagram" />
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Facebook</label>
+                                    <input class="form-control" id="facebook" name="facebook" type="text" placeholder="Masukkan facebook" />
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Tiktok</label>
+                                    <input class="form-control" id="tiktok" name="tiktok" type="text" placeholder="Masukkan tiktok" />
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">KK (Kartu Keluarga) <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="kk_file" name="kk_file" type="file" accept="image/png,image/jpeg,image/jpg" />
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">KTP <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="ktp_file" name="ktp_file" type="file" accept="image/png,image/jpeg,image/jpg" />
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Password <i>(Mohon Diingat!)</i></label>
-                                    <input class="form-control" id="password" type="password" placeholder="Masukkan password" data-sb-validations="required" />
+                                    <input class="form-control" id="password" name="password" type="password" placeholder="Masukkan password" data-sb-validations="required" />
                                     <div class="invalid-feedback" data-sb-feedback="password:required">Password tidak boleh kosong</div>
                                 </div>
                                 <div class="form-group mb-3">
