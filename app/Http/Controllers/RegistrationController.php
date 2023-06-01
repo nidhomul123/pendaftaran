@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TrParticipants;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -69,8 +70,15 @@ class RegistrationController extends Controller
                 'kk_filename' => $kk_filename,
                 'ktp_original_filename' => $ktp_original_filename,
                 'ktp_filename' => $ktp_filename,
-                'password' => Hash::make($request->password),
                 'created_by' => 'registration_form'
+            ]);
+
+            User::create([
+                'participant_id' => $id,
+                'name' => $request->full_name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'created_at' => date('Y-m-d H:i:s')
             ]);
 
             return response()->json([

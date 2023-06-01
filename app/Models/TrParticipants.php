@@ -43,7 +43,7 @@ class TrParticipants extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id', 'full_name', 'email', 'gender', 'birth_place', 'birth_date', 'pangkalan_gudep', 'kwarran_id', 'nik', 'nta_pramuka_nis_nim', 'scout_level_id', 'krida_saka_milenial_id', 'address', 'phone_number', 'twitter', 'instagram', 'facebook', 'tiktok', 'kk_original_filename', 'kk_filename', 'ktp_original_filename', 'ktp_filename', 'password', 'created_by', 'created_at', 'updated_by', 'updated_at'];
+    protected $fillable = ['id', 'full_name', 'email', 'gender', 'birth_place', 'birth_date', 'pangkalan_gudep', 'kwarran_id', 'nik', 'nta_pramuka_nis_nim', 'scout_level_id', 'krida_saka_milenial_id', 'address', 'phone_number', 'twitter', 'instagram', 'facebook', 'tiktok', 'kk_original_filename', 'kk_filename', 'ktp_original_filename', 'ktp_filename', 'created_by', 'created_at', 'updated_by', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
