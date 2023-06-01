@@ -73,19 +73,21 @@
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Nama Lengkap <span class="text-danger">*</span></label>
                                     <input class="form-control" id="full_name" name="full_name" type="text" placeholder="Masukkan nama lengkap" required
+                                    value="Andri Fanky Kurniawan"
                                     oninvalid="this.setCustomValidity('Nama Lengkap tidak boleh kosong')"
                                     oninput="this.setCustomValidity('')" />
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Email <span class="text-danger">*</span></label>
                                     <input class="form-control" id="email" name="email" type="email" placeholder="Masukkan alamat email" required
+                                    value="andrifanky@gmail.com"
                                     oninvalid="this.setCustomValidity('Email tidak boleh kosong')"
                                     oninput="this.setCustomValidity('')" />
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Jenis Kelamin <span class="text-danger">*</span></label>
                                     <br>
-                                    <input name="gender" type="radio" value="1" required />
+                                    <input name="gender" type="radio" value="1" required checked />
                                     &nbsp;
                                     <label>Laki-laki</label>
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -96,24 +98,26 @@
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Tempat Lahir <span class="text-danger">*</span></label>
                                     <input class="form-control" id="birth_place" name="birth_place" type="text" placeholder="Masukkan tempat lahir" required
+                                    value="Milan"
                                     oninvalid="this.setCustomValidity('Tempat Lahir tidak boleh kosong')"
                                     oninput="this.setCustomValidity('')" />
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Tanggal Lahir <span class="text-danger">*</span></label>
-                                    <input class="form-control" id="birth_date" name="birth_date" type="text" placeholder="Masukkan tanggal lahir" required
+                                    <input class="form-control" id="birth_date" name="birth_date" type="date" placeholder="Masukkan tanggal lahir" required
                                     oninvalid="this.setCustomValidity('Tanggal Lahir tidak boleh kosong')"
                                     oninput="this.setCustomValidity('')" />
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Pangkalan/Gudep <span class="text-danger">*</span></label>
                                     <input class="form-control" id="pangkalan_gudep" name="pangkalan_gudep" type="text" placeholder="Masukkan pangkalan/gudep" required
+                                    value="Test"
                                     oninvalid="this.setCustomValidity('Pangkalan/Gudep tidak boleh kosong')"
                                     oninput="this.setCustomValidity('')" />
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Kwarran <span class="text-danger">*</span></label>
-                                    <select class="form-control" name="kwarran">
+                                    <select class="form-control" name="kwarran" required>
                                         <option value="">- Pilih Kwarran -</option>
                                         @foreach ($kwarran as $item)
                                             <option value="{{ $item->id }}">{{ $item->kwarran }}</option>
@@ -127,12 +131,13 @@
                                 <div class="form-group mb-3">
                                     <label class="mb-2">NTA Pramuka/NIS/NIM <span class="text-danger">*</span></label>
                                     <input class="form-control" id="nta_pramuka_nis_nim" name="nta_pramuka_nis_nim" type="text" placeholder="Masukkan NTA Pramuka/NIS/NIM" required
+                                    value="test"
                                     oninvalid="this.setCustomValidity('NTA Pramuka/NIS/NIM tidak boleh kosong')"
                                     oninput="this.setCustomValidity('')" />
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Tingkatan Pramuka <span class="text-danger">*</span></label>
-                                    <select class="form-control" name="scout_level">
+                                    <select class="form-control" name="scout_level" required>
                                         <option value="">- Pilih Tingkatan Pramuka -</option>
                                         @foreach ($scout_level as $item)
                                             <option value="{{ $item->id }}">{{ $item->scout_level }}</option>
@@ -155,11 +160,12 @@
                                     <label class="mb-2">Alamat Tempat Tinggal <span class="text-danger">*</span></label>
                                     <textarea class="form-control" id="address" name="address" rows="2" placeholder="Masukkan alamat tempat tinggal" required
                                     oninvalid="this.setCustomValidity('Alamat Tempat Tinggal tidak boleh kosong')"
-                                    oninput="this.setCustomValidity('')"></textarea>
+                                    oninput="this.setCustomValidity('')">Yogyakarta</textarea>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Nomor Telepon <span class="text-danger">*</span></label>
                                     <input class="form-control" id="phone_number" name="phone_number" type="number" placeholder="Masukkan nomor telepon" required
+                                    value="081246872133"
                                     oninvalid="this.setCustomValidity('Nomor Telepon tidak boleh kosong')"
                                     oninput="this.setCustomValidity('')" />
                                 </div>
@@ -190,6 +196,7 @@
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Password <i>(Mohon Diingat!)</i> <span class="text-danger">*</span></label>
                                     <input class="form-control" id="password" name="password" type="password" placeholder="Masukkan password" required
+                                    value="user123"
                                     oninvalid="this.setCustomValidity('Password tidak boleh kosong')"
                                     oninput="this.setCustomValidity('')" />
                                 </div>
@@ -201,7 +208,7 @@
                                             <button type="button" class="btn btn-danger" class="reload_captcha" id="reload_captcha">↻</button>
                                         </div>
                                         <div class="col">
-                                            <input class="form-control" id="captcha" type="text" placeholder="Masukkan captcha" required
+                                            <input class="form-control" id="captcha" name="captcha" type="text" placeholder="Masukkan captcha" required
                                             oninvalid="this.setCustomValidity('Captcha tidak boleh kosong')"
                                             oninput="this.setCustomValidity('')" />
                                         </div>
@@ -248,11 +255,49 @@
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                        )
+                        Swal.fire({
+                            title: 'Sedang Menyimpan Data!',
+                            html: 'Mohon menunggu',
+                            timerProgressBar: true,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            didOpen: () => {
+                                Swal.showLoading()
+                            }
+                        })
+
+                        $.ajax({
+                            url: "{{ route('registration.register') }}",
+                            type: "POST",
+                            data: new FormData($('#registration_form')[0]),
+                            processData: false,
+                            contentType: false,
+                            success: function (res) {
+                                console.log(res);
+
+                                Swal.close()
+
+                                if (res.status) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Sukses',
+                                        text: res.message,
+                                        allowOutsideClick: false,
+                                        allowEscapeKey: false
+                                    }).then((result) => {
+                                        window.open("{{ route('login') }}", '_self');
+                                    })
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Maaf',
+                                        text: res.message,
+                                        allowOutsideClick: false,
+                                        allowEscapeKey: false
+                                    })
+                                }
+                            }
+                        });
                     }
                 })
                 event.preventDefault();

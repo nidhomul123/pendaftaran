@@ -10,4 +10,11 @@ class CaptchaValidationController extends Controller
     {
         return response()->json(['captcha'=> captcha_img()]);
     }
+
+    public function captchaValidation(Request $request)
+    {
+        $request->validate([
+            'captcha' => 'required|captcha'
+        ]);
+    }
 }

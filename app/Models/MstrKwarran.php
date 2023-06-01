@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_by
  * @property string $updated_at
+ * @property TrParticipants[] $trParticipants
  */
 class MstrKwarran extends Model
 {
@@ -41,4 +42,12 @@ class MstrKwarran extends Model
      * @var array
      */
     protected $fillable = ['kwarran', 'created_by', 'created_at', 'updated_by', 'updated_at'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function trParticipants()
+    {
+        return $this->hasMany('App\Models\TrParticipants', 'kwarran_id', 'id');
+    }
 }
