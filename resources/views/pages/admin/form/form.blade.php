@@ -72,6 +72,12 @@
                                             <span class="text">Tolak</span>
                                         </button>
                                     @endif
+                                    <a href="{{ route('form.detail', $item->id) }}" class="btn btn-info btn-icon-split btn-sm mt-1 btn-detail">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-info"></i>
+                                        </span>
+                                        <span class="text">Detail</span>
+                                    </a>
                                 </td>
                             </tr>
                             @php

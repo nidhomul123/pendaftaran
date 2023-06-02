@@ -33,6 +33,19 @@ class FormController extends Controller
         ]);
     }
 
+    public function detail($id)
+    {
+        $trParticipants = TrParticipants::with('mstrKwarran','mstrScoutLevel','mstrKridaSakaMilenial','trParticipantsRegistrationStatus')
+        ->where('id',$id)
+        ->first();
+
+        return view('pages.admin.form.detail', [
+            'sb_open' => '',
+            'sb_active' => 'form',
+            'participants' => $trParticipants
+        ]);
+    }
+
     public function accept(Request $request)
     {
         try {

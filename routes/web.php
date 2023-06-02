@@ -32,6 +32,7 @@ Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard'
 
 Route::controller(FormController::class)->group(function () {
     Route::get('form', 'index')->name('form');
+    Route::get('form/detail/{id}', 'detail')->name('form.detail');
     Route::post('form/accept', 'accept')->name('form.accept');
     Route::post('form/reject', 'reject')->name('form.reject');
 });
