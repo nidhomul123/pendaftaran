@@ -28,10 +28,14 @@ class DashboardController extends Controller
         if (auth()->user()->hasRole('admin')) {
             // * Admin
 
-            $participantCount = 120;
-            $acceptedCount = 105;
-            $rejectedCount = 10;
-            $queueCount = 5;
+            $participantCount = TrParticipants::count();
+            $acceptedCount = TrParticipants::whereHas('trParticipantsRegistrationStatus', function ($query) {
+                $query->where('status',1);
+            })->count();
+            $rejectedCount = TrParticipants::whereHas('trParticipantsRegistrationStatus', function ($query) {
+                $query->where('status',0);
+            })->count();
+            $queueCount = TrParticipants::doesntHave('trParticipantsRegistrationStatus')->count();
 
             return view('pages.admin.dashboard', [
                 'sb_open' => '',
