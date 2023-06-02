@@ -48,6 +48,6 @@ class MstrKwarran extends Model
      */
     public function trParticipants()
     {
-        return $this->hasMany('App\Models\TrParticipants', 'kwarran_id', 'id');
+        return $this->hasMany('App\Models\TrParticipants', 'id', 'kwarran_id');
     }
 }

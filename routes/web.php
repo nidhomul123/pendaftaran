@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\CaptchaValidationController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Auth;
@@ -27,4 +28,10 @@ Route::post('register', [RegistrationController::class, 'register'])->name('regi
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::controller(FormController::class)->group(function () {
+    Route::get('form', 'index')->name('form');
+    Route::post('form/accept', 'accept')->name('form.accept');
+    Route::post('form/reject', 'reject')->name('form.reject');
+});

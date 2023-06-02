@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property MstrKwarran $mstrKwarran
  * @property MstrScoutLevel $mstrScoutLevel
  * @property MstrKridaSakaMilenial $mstrKridaSakaMilenial
+ * @property TrParticipants $trParticipants
  */
 class TrParticipants extends Model
 {
@@ -50,7 +51,7 @@ class TrParticipants extends Model
      */
     public function mstrKwarran()
     {
-        return $this->belongsTo('App\Models\MstrKwarran', 'id', 'kwarran_id');
+        return $this->belongsTo('App\Models\MstrKwarran', 'kwarran_id', 'id');
     }
 
     /**
@@ -58,7 +59,7 @@ class TrParticipants extends Model
      */
     public function mstrScoutLevel()
     {
-        return $this->belongsTo('App\Models\MstrScoutLevel', 'id', 'scout_level_id');
+        return $this->belongsTo('App\Models\MstrScoutLevel', 'scout_level_id', 'id');
     }
 
     /**
@@ -66,6 +67,14 @@ class TrParticipants extends Model
      */
     public function mstrKridaSakaMilenial()
     {
-        return $this->belongsTo('App\Models\MstrKridaSakaMilenial', 'id', 'krida_saka_milenial_id');
+        return $this->belongsTo('App\Models\MstrKridaSakaMilenial', 'krida_saka_milenial_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function trParticipantsRegistrationStatus()
+    {
+        return $this->belongsTo('App\Models\TrParticipantsRegistrationStatus', 'id', 'participant_id');
     }
 }

@@ -1,5 +1,8 @@
 <!-- Default -->
 
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <!-- Fonts -->
 <link rel="dns-prefetch" href="//fonts.bunny.net">
 <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -20,7 +23,14 @@
 <!-- Custom styles for this template-->
 <link href="{{ asset('sb-admin-2/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+<!-- Custom styles for this page -->
+<link href="{{ asset('sb-admin-2/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
 <!-- ---------- -->
+
+<script src="{{ asset('js/jquery-3.7.0.min.js') }}"></script>
+
+<script src="{{ asset('js/sweetalert2@11.js') }}"></script>
 
 {{-- <!-- Bootstrap core JavaScript-->
 <script src="{{ asset('sb-admin-2/vendor/jquery/jquery.min.js') }}"></script>

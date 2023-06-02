@@ -6,21 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
- * @property string $scout_level
+ * @property string $participant_id
+ * @property int $status
  * @property string $created_by
  * @property string $created_at
  * @property string $updated_by
  * @property string $updated_at
- * @property TrParticipants[] $trParticipants
+ * @property TrParticipants $trParticipants
  */
-class MstrScoutLevel extends Model
+class TrParticipantsRegistrationStatus extends Model
 {
     /**
      * The table associated with the model.
      * 
      * @var string
      */
-    protected $table = 'mstr_scout_level';
+    protected $table = 'tr_participants_registration_status';
 
     public $timestamps = false;
 
@@ -41,13 +42,13 @@ class MstrScoutLevel extends Model
     /**
      * @var array
      */
-    protected $fillable = ['scout_level', 'created_by', 'created_at', 'updated_by', 'updated_at'];
+    protected $fillable = ['id', 'participant_id', 'status', 'created_by', 'created_at', 'updated_by', 'updated_at'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function trParticipants()
     {
-        return $this->hasMany('App\Models\TrParticipants', 'id', 'scout_level_id');
+        return $this->belongsTo('App\Models\TrParticipants', 'participant_id', 'id');
     }
 }

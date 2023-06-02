@@ -48,6 +48,6 @@ class MstrKridaSakaMilenial extends Model
      */
     public function trParticipants()
     {
-        return $this->hasMany('App\Models\TrParticipants', 'krida_saka_milenial_id', 'id');
+        return $this->hasMany('App\Models\TrParticipants', 'id', 'krida_saka_milenial_id');
     }
 }

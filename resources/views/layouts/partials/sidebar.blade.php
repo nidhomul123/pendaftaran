@@ -12,8 +12,8 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+    <li class="nav-item {{ $sb_active == 'dashboard' ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -21,7 +21,17 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
+    <div class="sidebar-heading">
+        Menu
+    </div>
+
+    <li class="nav-item {{ $sb_active == 'form' ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('form') }}">
+            <i class="fas fa-fw fa-bars"></i>
+            <span>Formulir</span></a>
+    </li>
+
+    {{-- <!-- Heading -->
     <div class="sidebar-heading">
         Interface
     </div>
@@ -102,7 +112,7 @@
         <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
-    </li>
+    </li> --}}
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
@@ -113,10 +123,10 @@
     </div>
 
     <!-- Sidebar Message -->
-    <div class="sidebar-card d-none d-lg-flex">
+    {{-- <div class="sidebar-card d-none d-lg-flex">
         <img class="sidebar-card-illustration mb-2" src="{{ asset('sb-admin-2/img/undraw_rocket.svg') }}" alt="...">
         <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
         <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-    </div>
+    </div> --}}
 
 </ul>

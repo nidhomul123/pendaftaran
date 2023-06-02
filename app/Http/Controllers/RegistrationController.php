@@ -14,7 +14,6 @@ class RegistrationController extends Controller
 {
     public function register(Request $request)
     {
-        // dd($request->all());
         try {
             try {
                 $id = Uuid::uuid4()->toString();

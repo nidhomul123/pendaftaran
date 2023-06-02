@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Agency - Start Bootstrap Theme</title>
+        <title>Pendaftaran Anggota Saka Milenial</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{{ asset('agency/assets/favicon.ico') }}" />
         <!-- Font Awesome icons (free version)-->
@@ -40,6 +40,9 @@
                         <li class="nav-item"><a class="nav-link" href="#registration">Daftar</a></li>
                         <li class="nav-item"><a class="nav-link" href="#statistic">Statistik</a></li>
                         <li class="nav-item"><a class="nav-link" href="#registration_information">Info Pendaftaran</a></li>
+                        @if (auth()->check())
+                            <li class="nav-item"><a class="nav-link" style="color: #ffc800" href="{{ route('dashboard') }}">Dashboard</a></li>
+                        @endif
                         {{-- <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
