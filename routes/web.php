@@ -4,6 +4,7 @@ use App\Http\Controllers\CaptchaValidationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,4 +36,9 @@ Route::controller(FormController::class)->group(function () {
     Route::get('form/detail/{id}', 'detail')->name('form.detail');
     Route::post('form/accept', 'accept')->name('form.accept');
     Route::post('form/reject', 'reject')->name('form.reject');
+});
+
+Route::controller(ProfileController::class)->group(function () {
+    Route::get('profile', 'index')->name('profile');
+    Route::put('profile/update', 'update')->name('profile.update');
 });
