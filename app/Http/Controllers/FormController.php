@@ -27,9 +27,15 @@ class FormController extends Controller
             ]);
         }
         // * User
+
+        $trParticipants = TrParticipants::with('mstrKwarran','mstrScoutLevel','mstrKridaSakaMilenial','trParticipantsRegistrationStatus')
+        ->where('id',auth()->user()->participant_id)
+        ->first();
+
         return view('pages.user.form.form', [
             'sb_open' => '',
-            'sb_active' => 'form'
+            'sb_active' => 'form',
+            'participants' => $trParticipants
         ]);
     }
 
