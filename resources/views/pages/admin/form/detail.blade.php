@@ -162,10 +162,16 @@
                     <div class="form-group mb-3">
                         <label class="mb-2">KK (Kartu Keluarga) <span class="text-danger">*</span></label>
                         <input class="form-control" id="kk_file" name="kk_file" type="file" accept="image/png,image/jpeg,image/jpg" required disabled />
+                        <a href="{{ url('storage/registration') }}/{{ $participants->kk_filename }}" target="_blank">
+                            <img src="{{ url('storage/registration') }}/{{ $participants->kk_filename }}" class="mt-3" height="150">
+                        </a>
                     </div>
                     <div class="form-group mb-3">
                         <label class="mb-2">KTP <span class="text-danger">*</span></label>
                         <input class="form-control" id="ktp_file" name="ktp_file" type="file" accept="image/png,image/jpeg,image/jpg" required disabled />
+                        <a href="{{ url('storage/registration') }}/{{ $participants->ktp_filename }}" target="_blank">
+                            <img src="{{ url('storage/registration') }}/{{ $participants->ktp_filename }}" class="mt-3" height="150">
+                        </a>
                     </div>
                 </div>
             </div>
