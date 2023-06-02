@@ -11,9 +11,9 @@ class LandingController extends Controller
 {
     public function index()
     {
-        $mstrKwarran = MstrKwarran::all();
-        $mstrScoutLevel = MstrScoutLevel::all();
-        $mstrKridaSakaMilenial = MstrKridaSakaMilenial::all();
+        $mstrKwarran = MstrKwarran::where('is_deleted',0)->get();
+        $mstrScoutLevel = MstrScoutLevel::where('is_deleted',0)->get();
+        $mstrKridaSakaMilenial = MstrKridaSakaMilenial::where('is_deleted',0)->get();
 
         return view('landing', [
             'kwarran' => $mstrKwarran,

@@ -31,6 +31,28 @@
             <span>Formulir</span></a>
     </li>
 
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        Master
+    </div>
+
+    <li class="nav-item {{ $sb_active == 'master_kwarran' ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('master.kwarran') }}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Kwarran</span></a>
+    </li>
+    <li class="nav-item {{ $sb_active == 'master_scout_level' ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('master.scout_level') }}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Tingkatan Pramuka</span></a>
+    </li>
+    <li class="nav-item {{ $sb_active == 'master_krida_saka_milenial' ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('master.krida_saka_milenial') }}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Krida Saka Milenial</span></a>
+    </li>
+
     {{-- <!-- Heading -->
     <div class="sidebar-heading">
         Interface

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $id
  * @property string $kwarran
+ * @property int $is_deleted
  * @property string $created_by
  * @property string $created_at
  * @property string $updated_by
@@ -41,7 +42,7 @@ class MstrKwarran extends Model
     /**
      * @var array
      */
-    protected $fillable = ['kwarran', 'created_by', 'created_at', 'updated_by', 'updated_at'];
+    protected $fillable = ['id', 'kwarran', 'is_deleted', 'created_by', 'created_at', 'updated_by', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
