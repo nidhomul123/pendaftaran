@@ -6,6 +6,10 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Pendaftaran Anggota Saka Milenial</title>
+
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{{ asset('agency/assets/favicon.ico') }}" />
         <!-- Font Awesome icons (free version)-->
@@ -16,8 +20,8 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('agency/css/styles.css') }}" rel="stylesheet" />
 
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <!-- Custom styles for this page -->
+        <link href="{{ asset('sb-admin-2/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
         <style>
             .mr-5 {
@@ -222,6 +226,46 @@
                 </div>
             </div>
         </section>
+        <!-- Statistic -->
+        <section class="page-section bg-light" id="statistic">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Statistik</h2>
+                    <h3 class="section-subheading text-muted"></h3>
+                </div>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Data Statistik</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Krida Saka Milenial</th>
+                                        <th>Kwarran</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($statistic as $item)
+                                        <tr>
+                                            <td>{{ $item['no'] }}</td>
+                                            <td>{{ $item['full_name'] }}</td>
+                                            <td>{{ $item['krida_saka_milenial'] }}</td>
+                                            <td>{{ $item['kwarran'] }}</td>
+                                            <td>{!! $item['status'] !!}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         </div>
 
         <script src="{{ asset('js/jquery-3.7.0.min.js') }}"></script>
@@ -344,6 +388,13 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="{{ asset('agency/js/scripts.js') }}"></script>
+
+        <!-- Page level plugins -->
+        <script src="{{ asset('sb-admin-2/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('sb-admin-2/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="{{ asset('sb-admin-2/js/demo/datatables-demo.js') }}"></script>
 
         {{-- <script src="{{ asset('agency/js/sb-forms-0.4.1.js') }}"></script> --}}
     </body>
