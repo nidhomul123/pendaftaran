@@ -13,8 +13,14 @@ class CaptchaValidationController extends Controller
 
     public function captchaValidation(Request $request)
     {
-        $request->validate([
+        $rules = [
             'captcha' => 'required|captcha'
-        ]);
+        ];
+        $validator = validator()->make(request()->all(), $rules);
+        if ($validator->fails()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

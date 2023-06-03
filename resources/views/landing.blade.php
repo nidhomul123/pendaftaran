@@ -16,6 +16,9 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('agency/css/styles.css') }}" rel="stylesheet" />
 
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <style>
             .mr-5 {
                 margin-right: 5px;
@@ -76,21 +79,19 @@
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Nama Lengkap <span class="text-danger">*</span></label>
                                     <input class="form-control" id="full_name" name="full_name" type="text" placeholder="Masukkan nama lengkap" required
-                                    value="Andri Fanky Kurniawan"
                                     oninvalid="this.setCustomValidity('Nama Lengkap tidak boleh kosong')"
                                     oninput="this.setCustomValidity('')" />
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Email <span class="text-danger">*</span></label>
                                     <input class="form-control" id="email" name="email" type="email" placeholder="Masukkan alamat email" required
-                                    value="andrifanky@gmail.com"
                                     oninvalid="this.setCustomValidity('Email tidak boleh kosong')"
                                     oninput="this.setCustomValidity('')" />
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Jenis Kelamin <span class="text-danger">*</span></label>
                                     <br>
-                                    <input name="gender" type="radio" value="1" required checked />
+                                    <input name="gender" type="radio" value="1" required />
                                     &nbsp;
                                     <label>Laki-laki</label>
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -101,7 +102,6 @@
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Tempat Lahir <span class="text-danger">*</span></label>
                                     <input class="form-control" id="birth_place" name="birth_place" type="text" placeholder="Masukkan tempat lahir" required
-                                    value="Milan"
                                     oninvalid="this.setCustomValidity('Tempat Lahir tidak boleh kosong')"
                                     oninput="this.setCustomValidity('')" />
                                 </div>
@@ -114,7 +114,6 @@
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Pangkalan/Gudep <span class="text-danger">*</span></label>
                                     <input class="form-control" id="pangkalan_gudep" name="pangkalan_gudep" type="text" placeholder="Masukkan pangkalan/gudep" required
-                                    value="Test"
                                     oninvalid="this.setCustomValidity('Pangkalan/Gudep tidak boleh kosong')"
                                     oninput="this.setCustomValidity('')" />
                                 </div>
@@ -134,7 +133,6 @@
                                 <div class="form-group mb-3">
                                     <label class="mb-2">NTA Pramuka/NIS/NIM <span class="text-danger">*</span></label>
                                     <input class="form-control" id="nta_pramuka_nis_nim" name="nta_pramuka_nis_nim" type="text" placeholder="Masukkan NTA Pramuka/NIS/NIM" required
-                                    value="test"
                                     oninvalid="this.setCustomValidity('NTA Pramuka/NIS/NIM tidak boleh kosong')"
                                     oninput="this.setCustomValidity('')" />
                                 </div>
@@ -163,12 +161,11 @@
                                     <label class="mb-2">Alamat Tempat Tinggal <span class="text-danger">*</span></label>
                                     <textarea class="form-control" id="address" name="address" rows="2" placeholder="Masukkan alamat tempat tinggal" required
                                     oninvalid="this.setCustomValidity('Alamat Tempat Tinggal tidak boleh kosong')"
-                                    oninput="this.setCustomValidity('')">Yogyakarta</textarea>
+                                    oninput="this.setCustomValidity('')"></textarea>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Nomor Telepon <span class="text-danger">*</span></label>
                                     <input class="form-control" id="phone_number" name="phone_number" type="number" placeholder="Masukkan nomor telepon" required
-                                    value="081246872133"
                                     oninvalid="this.setCustomValidity('Nomor Telepon tidak boleh kosong')"
                                     oninput="this.setCustomValidity('')" />
                                 </div>
@@ -199,7 +196,6 @@
                                 <div class="form-group mb-3">
                                     <label class="mb-2">Password <i>(Mohon Diingat!)</i> <span class="text-danger">*</span></label>
                                     <input class="form-control" id="password" name="password" type="password" placeholder="Masukkan password" required
-                                    value="user123"
                                     oninvalid="this.setCustomValidity('Password tidak boleh kosong')"
                                     oninput="this.setCustomValidity('')" />
                                 </div>
@@ -270,34 +266,70 @@
                         })
 
                         $.ajax({
-                            url: "{{ route('registration.register') }}",
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            url: "{{ route('captcha_validation') }}",
                             type: "POST",
-                            data: new FormData($('#registration_form')[0]),
-                            processData: false,
-                            contentType: false,
-                            success: function (res) {
-                                console.log(res);
+                            data: {
+                                captcha: $('input[name=captcha]').val()
+                            },
+                            success: function (status) {
+                                if (status) {
+                                    // Valid Captcha
 
-                                Swal.close()
+                                    $.ajax({
+                                        url: "{{ route('registration.register') }}",
+                                        type: "POST",
+                                        data: new FormData($('#registration_form')[0]),
+                                        processData: false,
+                                        contentType: false,
+                                        success: function (res) {
+                                            console.log(res);
 
-                                if (res.status) {
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'Sukses',
-                                        text: res.message,
-                                        allowOutsideClick: false,
-                                        allowEscapeKey: false
-                                    }).then((result) => {
-                                        window.open("{{ route('login') }}", '_self');
-                                    })
+                                            Swal.close()
+
+                                            if (res.status) {
+                                                Swal.fire({
+                                                    icon: 'success',
+                                                    title: 'Sukses',
+                                                    text: res.message,
+                                                    allowOutsideClick: false,
+                                                    allowEscapeKey: false
+                                                }).then((result) => {
+                                                    window.open("{{ route('login') }}", '_self');
+                                                })
+                                            } else {
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Maaf',
+                                                    text: res.message,
+                                                    allowOutsideClick: false,
+                                                    allowEscapeKey: false
+                                                })
+                                            }
+                                        }
+                                    });
                                 } else {
+                                    // Invalid Captcha
+
+                                    Swal.close()
+
                                     Swal.fire({
                                         icon: 'error',
                                         title: 'Maaf',
-                                        text: res.message,
+                                        text: 'Captcha tidak valid',
                                         allowOutsideClick: false,
                                         allowEscapeKey: false
                                     })
+
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "{{ route('reload_captcha') }}",
+                                        success: function (data) {
+                                            $(".captcha span").html(data.captcha);
+                                        }
+                                    });
                                 }
                             }
                         });
