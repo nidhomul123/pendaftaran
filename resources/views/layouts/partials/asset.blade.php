@@ -2,7 +2,7 @@
 
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
-
+<link rel="icon" href="{{ url('img/logo_saka_milenial.png') }}">
 <!-- Fonts -->
 <link rel="dns-prefetch" href="//fonts.bunny.net">
 <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
